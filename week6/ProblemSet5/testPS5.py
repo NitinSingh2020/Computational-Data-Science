@@ -1,4 +1,5 @@
 from graph import *
+from ps5 import *
 
 def test1():
 	g = WeightedDigraph()
@@ -22,18 +23,9 @@ def test1():
 	print g # a->b (15.0, 10.0) a->c (14.0, 6.0) b->c (3.0, 1.0)
 
 def test2():
-	na = Node('a')
-	nb = Node('b')
-	nc = Node('c')	
-	e1 = WeightedEdge(na, nb, 15, 10)
-	print e1 # a->b (15, 10)
-	print e1.getTotalDistance() # 15  
-	print e1.getOutdoorDistance() # 10
-
-	e2 = WeightedEdge(na, nc, 14, 6)
-	e3 = WeightedEdge(nb, nc, 3, 1)
-	print e2 # a->c (14, 6)
-	print e3 # b->c (3, 1)
+	mitMap = load_map("mit_map.txt")
+	print isinstance(mitMap, Digraph)
+	print isinstance(mitMap, WeightedDigraph)
 
 if __name__ == '__main__':
-	test1()
+	test2()

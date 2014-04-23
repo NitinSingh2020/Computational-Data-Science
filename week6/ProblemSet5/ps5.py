@@ -37,6 +37,36 @@ def load_map(mapFilename):
     """
     # TODO
     print "Loading map from file..."
+
+    # Instantiate the Weighted Digraph
+    mitMap = WeightedDigraph()
+
+    # Read the data file and loop over the included data
+    dataFile = open(mapFilename , 'r')
+    # i = 1
+    for line in dataFile:
+        # print "in loop #", i
+        src, des, totDis, outDis = line.split()
+        # print src, des, totDis, outDis
+
+        try:
+            # Instantiate Source and Destination nodes
+            srcNode = Node(src)
+            desNode = Node(des)
+
+            # Add Source and Destination nodes to the digraph
+            mitMap.addNode(srcNode)
+            mitMap.addNode(desNode)
+            edge = WeightedEdge(srcNode, desNode, 15, 10)
+            mitMap.addEdge(edge)
+
+        except ValueError:
+            pass
+
+        # i += 1
+
+    return mitMap
+        
         
 
 #
