@@ -26,6 +26,9 @@ def test2():
 	mitMap = load_map("mit_map.txt")
 	print isinstance(mitMap, Digraph)
 	print isinstance(mitMap, WeightedDigraph)
+	print "Set of nodes is: \n", mitMap.nodes
+	print "\n"
+	print 'Edges are :\n', mitMap.edges
 
 if __name__ == '__main__':
 	test2()

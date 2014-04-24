@@ -43,28 +43,25 @@ def load_map(mapFilename):
 
     # Read the data file and loop over the included data
     dataFile = open(mapFilename , 'r')
-    # i = 1
     for line in dataFile:
-        # print "in loop #", i
-        src, des, totDis, outDis = line.split()
-        # print src, des, totDis, outDis
-
+        src, des, totDis, outDis = line.split()        
+        srcNode = Node(src) # Instantiate Source node
         try:
-            # Instantiate Source and Destination nodes
-            srcNode = Node(src)
-            desNode = Node(des)
-
-            # Add Source and Destination nodes to the digraph
-            mitMap.addNode(srcNode)
-            mitMap.addNode(desNode)
-            edge = WeightedEdge(srcNode, desNode, 15, 10)
-            mitMap.addEdge(edge)
-
+            mitMap.addNode(srcNode) # Add Source node to the digraph
         except ValueError:
             pass
 
-        # i += 1
+        desNode = Node(des) # Instantiate Destination node
+        try:
+            mitMap.addNode(desNode) # Add Destination node to the digraph
+        except ValueError:
+            pass
 
+        try:
+            edge = WeightedEdge(srcNode, desNode, totDis, outDis)
+            mitMap.addEdge(edge)
+        except ValueError:
+            pass
     return mitMap
         
         
