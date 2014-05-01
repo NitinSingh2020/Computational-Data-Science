@@ -53,21 +53,39 @@ class Cluster(object):
         self and the other point is from other. Uses the 
         Euclidean dist between 2 points, defined in Point."""
         # TO DO
-        pass
+        minDis = self.points[0].distance(other.points[0])
+        for pointSelf in self.points:
+            for pointOther in other.points:
+                if pointSelf.distance(pointOther) < minDis:
+                    minDis = pointSelf.distance(pointOther)
+        return minDis
     def maxLinkageDist(self, other):
         """ Returns the float distance between the points that 
         are farthest from each other, where one point is from 
         self and the other point is from other. Uses the 
         Euclidean dist between 2 points, defined in Point."""
         # TO DO
-        pass
+        maxDis = self.points[0].distance(other.points[0])
+        for pointSelf in self.points:
+            for pointOther in other.points:
+                if pointSelf.distance(pointOther) > maxDis:
+                    maxDis = pointSelf.distance(pointOther)
+        return maxDis
     def averageLinkageDist(self, other):
         """ Returns the float average (mean) distance between all 
         pairs of points, where one point is from self and the 
         other point is from other. Uses the Euclidean dist 
         between 2 points, defined in Point."""
         # TO DO
-        pass
+        dist = []
+        for pointSelf in self.points:
+            for pointOther in other.points:
+                dist.append(pointSelf.distance(pointOther))
+        avgDist = 0
+        for k in dist:
+            avgDist += k
+        avgDist = avgDist/len(dist)
+        return avgDist
     def members(self):
         for p in self.points:
             yield p
